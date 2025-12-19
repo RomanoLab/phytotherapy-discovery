@@ -52,8 +52,8 @@ At a high level, the workflow supports:
 
 ```  
 
-| File / Dir             | Purpose                                                     |
-| ---------------------- | ----------------------------------------------------------- |
+| File / Dir             | Purpose                                                                      |
+| ---------------------- | -----------------------------------------------------------------------------|
 | `CTAPred/`             | Modified CTAPred pipeline used to predict protein–phytochemical interactions |
 | `CTAPred/README.md     | Canonical usage instructions for running CTAPred in this repo                |
 | `Crequirements.txt`    | Repo-level dependencies used by analysis utilities                           |
@@ -62,43 +62,50 @@ At a high level, the workflow supports:
 ---
 
 ## Quick Start
-1) Clone
 
-git clone https://github.com/RomanoLab/phytotherapy-discovery.git
-cd phytotherapy-discovery
+### 1. Clone
 
-2) (Recommended) Create a virtual environment
+    git clone https://github.com/RomanoLab/phytotherapy-discovery.git
+    cd phytotherapy-discovery
 
-python -m venv .venv
-source .venv/bin/activate     # Windows: .venv\Scripts\activate
+### 2. (Recommended) Create a virtual environment
 
-3) Install dependencies
+    python -m venv .venv
+    source .venv/bin/activate      # Windows: .venv\Scripts\activate
+
+### 3. Install dependencies
+
 If you are running CTAPred, install CTAPred’s pinned dependencies:
 
-pip install -r CTAPred/requirements.txt
+    pip install -r CTAPred/requirements.txt
 
 If you are running other repo-level analysis utilities, you may also install the root requirements:
 
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
-4) Run CTAPred
-Follow the instructions in CTAPred/README.md. To see the CLI options:
+### 4. Run CTAPred
 
-python CTAPred/predict_targets.py --help
+Follow the instructions in `CTAPred/README.md`. To see the CLI options:
 
-CTAPred/QueryList1_smiles.csv is provided as an example/input artifact containing phytochemical SMILES used for predictions.
+    python CTAPred/predict_targets.py --help
 
-## Command-line Reference
-Because this repository’s executable workflow is centered on CTAPred, the authoritative CLI reference is:
-
-python CTAPred/predict_targets.py --help
-
-For usage examples, input expectations, and output files, see:
-- CTAPred/README.md
+`CTAPred/QueryList1_smiles.csv` is provided as an example/input artifact containing phytochemical SMILES used for predictions.
 
 ---
 
-### Workflow Details
+## Command-line Reference
+
+Because this repository’s executable workflow is centered on CTAPred, the authoritative CLI reference is:
+
+    python CTAPred/predict_targets.py --help
+
+For usage examples, input expectations, and output files, see:
+
+- `CTAPred/README.md`
+
+---
+
+## Workflow Details
 A typical end-to-end workflow looks like this:
 1) Consult / generate ontology artifacts upstream
 Use RomanoLab/poppy to access the ontology and (if needed) derive a phytochemical set for ML analysis.
