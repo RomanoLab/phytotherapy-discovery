@@ -1,9 +1,7 @@
-# Note: 
-This is the analysis for "Phytotherapy Discovery through Ontology-Guided Machine Learning" in which we use the ontology found at https://github.com/RomanoLab/poppy. Please consult the aformentioned repository first before embarking on the analysis.
 
 # Ontology Work Toolkit
 
-*A lightweight Python package distilled from the Jupyter notebook **`Ontology_Work (2).ipynb`** for loading, enriching, and analysing a phytotherapy-focused OWL/Turtle ontology.*
+This is the analysis for "Phytotherapy Discovery through Ontology-Guided Machine Learning" in which we use the ontology found at https://github.com/RomanoLab/poppy. Please consult the aformentioned repository first before embarking on the analysis.
 
 ---
 
