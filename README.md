@@ -54,9 +54,9 @@ At a high level, the workflow supports:
 
 | File / Dir             | Purpose                                                     |
 | ---------------------- | ----------------------------------------------------------- |
-| `CTAPred/`             | Modified CTAPred pipeline used to predict protein–phytochemical interactions       |
-| `CTAPred/README.md     | Canonical usage instructions for running CTAPred in this repo                  |
-| `Crequirements.txt`    | Repo-level dependencies used by analysis utilities |
+| `CTAPred/`             | Modified CTAPred pipeline used to predict protein–phytochemical interactions |
+| `CTAPred/README.md     | Canonical usage instructions for running CTAPred in this repo                |
+| `Crequirements.txt`    | Repo-level dependencies used by analysis utilities                           |
 
 ```
 ---
@@ -96,6 +96,8 @@ python CTAPred/predict_targets.py --help
 For usage examples, input expectations, and output files, see:
 - CTAPred/README.md
 
+---
+
 ### Workflow Details
 A typical end-to-end workflow looks like this:
 1) Consult / generate ontology artifacts upstream
@@ -107,17 +109,23 @@ Execute CTAPred/predict_targets.py to generate predicted protein targets / ranke
 4) Downstream analysis / integration
 Use predictions for prioritization, hypothesis generation, or reintegration into ontology/KG analyses (depending on your study design and tooling).
 
+---
+
 ## Extending the Toolkit
 Ideas that keep this repository aligned with its current scope:
-- Make CTAPred outputs easier to consume (standardize output schemas; add converters to KG/CSV/Parquet).
-- Add reproducibility tooling (Dockerfile; pinned Python versions; small test fixtures).
-- Add CI (lint + unit tests for CTAPred helper functions; smoke test on sample inputs).
-- Add analysis notebooks that explicitly document how CTAPred outputs connect back to the upstream ontology.
+* **Modularise** – split into smaller modules and expose a proper Python API.
+* **Unit tests** – add `pytest` and GitHub Actions for continuous integration.
+* **Visualisation** – integrate network diagrams or heatmaps (e.g., via `matplotlib`).
+* **Docker** – package the pipeline for reproducible runs on any machine.
+
+---
 
 ## Contributing
-- Fork → create a feature branch → commit + push → open a Pull Request.
-- Keep changes scoped and well-described (what/why/how).
-- If you change model inputs/outputs, update CTAPred/README.md and this README accordingly.
+1. Fork → create a feature branch → commit + push → open a Pull Request.
+2. Keep changes scoped and well-described (what/why/how).
+3. If you change model inputs/outputs, update CTAPred/README.md and this README accordingly.
+
+---
 
 ## Citation
 If you use this repository in research, please cite:
@@ -132,60 +140,5 @@ If you use this repository in research, please cite:
 }
 ```
 
-
-
-
----
-
-## Quick Start
-
-c
-   Results:
-
-   * `metrics.json` – counts of classes, individuals, triples, etc.
-   * `phytotherapies_enriched.ttl` – copy of the ontology with `hasECFP` data properties inserted.
-
----
-
-## Command-line Reference
-
-```text
-usage: ontology_work.py [-h] --ontology PATH [--ecfp-csv PATH]
-                        [--out PATH] [--log-level {DEBUG,INFO,WARNING,ERROR}]
-
-optional arguments:
-  --ontology PATH      input OWL/Turtle/RDF file (required)
-  --ecfp-csv PATH      CSV with columns `smiles,ecfp` for enrichment
-  --out PATH           where to save metrics JSON (default: stdout)
-  --log-level LEVEL    set log verbosity (default: INFO)
-```
-
----
-
-## Workflow Details
-
-1. **Parse ontology** using **rdflib** – handles TTL, RDF/XML, OWL.
-2. **Compute / insert fingerprints** – matches individuals by `hasSmiles` and adds `hasECFP`.
-3. **SPARQL metrics** – counts classes, properties, individuals, & custom queries.
-4. **Export artifacts** – enriched TTL plus JSON metrics for figures or dashboards.
-
----
-
-## Extending the Toolkit
-
-* **Modularise** – split into smaller modules and expose a proper Python API.
-* **Unit tests** – add `pytest` and GitHub Actions for continuous integration.
-* **Visualisation** – integrate network diagrams or heatmaps (e.g., via `matplotlib`).
-* **Docker** – package the pipeline for reproducible runs on any machine.
-
----
-
-## Contributing
-
-1. Fork → feature branch → commit + push → Pull Request.
-2. Follow [PEP 8](https://peps.python.org/pep-0008/) and add/ update tests.
-3. Be descriptive in PR titles & commit messages.
-
----
 
 
